@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Home from './routes/Home';
+import Detail from './routes/Detail';
 
 function App() {
+  return <Router>
+      <Routes>
+        <Route path='/hello' element={<h1>Hello</h1>}/>
+        <Route path='/movie/:id' element={<Detail/>}/>
+        <Route path='/' element={<Home/>}/>
+      </Routes>
+  </Router>
+}
+
+export default App;
+
+/* toDo 리스트
+function App() {
+  const [toDo, setToDo] = useState('');
+  const [toDos, setToDos] = useState([]);
+
+  const onChange = (event) => setToDo(event.target.value);
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if(toDo==='') {
+      return;
+    }
+    setToDos((current) => [toDo, ...current]);
+    setToDo('');
+  }
+  console.log(toDos);
+  const delToDo = (event) => {
+    setToDos(toDos.filter((_, index) => index!==parseInt(event.target.id))); 
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>My To Dos {toDos.length}</h1>
+      <form onSubmit={onSubmit}>
+        <input value={toDo} onChange={onChange} type='text' placeholder="Write your to do.." />
+        <button type='submit'>Submit</button>
+      </form>
+      <hr/>
+      <ul>
+        {toDos.map((item, index) => {
+          return <li key={index}><button id={index} className={item} onClick={delToDo}>Delete</button> {item}</li>
+        })}
+      </ul>
     </div>
   );
 }
 
 export default App;
+*/
