@@ -14,7 +14,7 @@ function App() {
 
 export default App;
 
-/* toDo 리스트
+/* toDo 리스트 form 사용 등
 function App() {
   const [toDo, setToDo] = useState('');
   const [toDos, setToDos] = useState([]);
